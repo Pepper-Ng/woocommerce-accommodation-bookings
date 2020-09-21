@@ -349,42 +349,58 @@ msgstr ""
 msgid "Range of nights during the week"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:3
+#: includes/admin/views/html-accommodation-booking-rates.php:5
+msgid "Price per block"
+msgstr ""
+
+#: includes/admin/views/html-accommodation-booking-rates.php:6
+msgid "Enable this to calculate price based on block price."
+msgstr ""
+
+#: includes/admin/views/html-accommodation-booking-rates.php:13
+msgid "Days per block"
+msgstr ""
+
+#: includes/admin/views/html-accommodation-booking-rates.php:14
+msgid "Number of days constituting a single block by which price is calculated."
+msgstr ""
+
+#: includes/admin/views/html-accommodation-booking-rates.php:27
 msgid "Standard room rate"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:3
+#: includes/admin/views/html-accommodation-booking-rates.php:28
 msgid "Standard cost for booking the room."
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:9
+#: includes/admin/views/html-accommodation-booking-rates.php:38
 msgid "Display cost"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:9
+#: includes/admin/views/html-accommodation-booking-rates.php:38
 msgid ""
 "The cost is displayed to the user on the frontend. Leave blank to have it "
 "calculated for you. If a booking has varying costs, this will be prefixed "
 "with the word \"from:\"."
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:23
+#: includes/admin/views/html-accommodation-booking-rates.php:52
 msgid "Starting"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:24
+#: includes/admin/views/html-accommodation-booking-rates.php:53
 msgid "Ending"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:24
+#: includes/admin/views/html-accommodation-booking-rates.php:53
 msgid "Includes this date/night."
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:25
+#: includes/admin/views/html-accommodation-booking-rates.php:54
 msgid "Cost"
 msgstr ""
 
-#: includes/admin/views/html-accommodation-booking-rates.php:25
+#: includes/admin/views/html-accommodation-booking-rates.php:54
 msgid "Cost for this time period."
 msgstr ""
 
