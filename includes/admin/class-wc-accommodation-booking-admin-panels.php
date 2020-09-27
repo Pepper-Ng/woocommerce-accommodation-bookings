@@ -163,7 +163,6 @@ class WC_Accommodation_Booking_Admin_Panels {
 			'_wc_accommodation_booking_display_cost'                => '',
 			'_wc_accommodation_booking_min_duration'                => 'int',
 			'_wc_accommodation_booking_max_duration'                => 'int',
-			'_wc_accommodation_booking_block_enable'                => 'yesno',
 			'_wc_accommodation_booking_block_days'                  => 'int',
 			'_wc_accommodation_booking_block_cost'                  => 'float',
 			'_wc_accommodation_booking_block_cost_calculation_mode' => '',
