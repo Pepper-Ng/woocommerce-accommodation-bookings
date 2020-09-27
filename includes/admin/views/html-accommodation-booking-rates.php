@@ -17,11 +17,11 @@
 			'desc_tip' => true,
 			'custom_attributes' => array(
 			  'min'   => '1',
-			  'step' 	=> '1'
+			  'step'  => '1'
 			) ) ); ?>
 
         <?php woocommerce_wp_text_input( array(
-            'id' => '_wc_accommodation_booking_block_price',
+            'id' => '_wc_accommodation_booking_block_cost',
             'label' => __( 'Price per block' , 'woocommerce-accommodation-bookings' ),
             'description' => __( 'The price used when the accommodation is priced per block.' , 'woocommerce-accommodation-bookings' ),
             'value' => get_post_meta( $post_id, '_wc_booking_block_price', true ),
