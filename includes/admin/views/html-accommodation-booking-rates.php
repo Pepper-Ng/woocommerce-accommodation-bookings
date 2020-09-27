@@ -2,7 +2,7 @@
 	<div class="options_group">
 		<?php woocommerce_wp_checkbox( array(
 			'id' => '_wc_accommodation_booking_block_enable',
-			'label' => __( 'Price per block' , 'woocommerce-accommodation-bookings' ),
+			'label' => __( 'Calculate price' , 'woocommerce-accommodation-bookings' ),
 			'description' => __( 'Enable this to calculate price based on block price.' , 'woocommerce-accommodation-bookings' ),
 			'value' => get_post_meta( $post_id, '_wc_booking_block_enable', true ),
 			'desc_tip' => true ) );
@@ -19,6 +19,34 @@
 			  'min'   => '1',
 			  'step' 	=> '1'
 			) ) ); ?>
+
+        <?php woocommerce_wp_text_input( array(
+            'id' => '_wc_accommodation_booking_block_price',
+            'label' => __( 'Price per block' , 'woocommerce-accommodation-bookings' ),
+            'description' => __( 'The price used when the accommodation is priced per block.' , 'woocommerce-accommodation-bookings' ),
+            'value' => get_post_meta( $post_id, '_wc_booking_block_price', true ),
+            'type' => 'number',
+            'desc_tip' => true,
+            'custom_attributes' => array(
+                'min' => '',
+                'step' => '0.01'
+            ) ) );
+        ?>
+
+        <?php woocommerce_wp_select( array(
+            'id'          => '_wc_accommodation_booking_price_calculation_mode',
+            'label'       => __( 'Use blocks', 'woocommerce-accommodation-bookings' ),
+            'description' => __( 'Choose when to use blocks to define booking duration and calculate cost.', 'woocommerce-accommodation-bookings' ),
+            'value'       => get_post_meta( $post_id, '_wc_booking_price_calculation_mode', true ),
+            'options'     => array(
+                'nights' => __( 'Never', 'woocommerce-accommodation-bookings' ),
+                'blocks' => __( 'Always', 'woocommerce-accommodation-bookings' ),
+                'blocks_season' => __( 'High season', 'woocommerce-accommodation-bookings' )
+            ),
+            'desc_tip'    => true,
+            'class'       => 'select'
+            ) );
+        ?>
 	</div>
 
 	<div class="options_group">
@@ -30,9 +58,10 @@
 			'type' => 'number',
 			'desc_tip' => true,
 			'custom_attributes' => array(
-			  'min'   => '',
-			  'step' 	=> '0.01'
+			  'min' => '',
+			  'step' => '0.01'
 			) ) ); ?>
+
 		<?php do_action( 'woocommerce_accommodation_bookings_after_booking_base_cost', $post_id ); ?>
 
 		<?php woocommerce_wp_text_input( array( 'id' => '_wc_accommodation_booking_display_cost', 'label' => __( 'Display cost', 'woocommerce-accommodation-bookings' ), 'description' => __( 'The cost is displayed to the user on the frontend. Leave blank to have it calculated for you. If a booking has varying costs, this will be prefixed with the word "from:".', 'woocommerce-accommodation-bookings' ), 'value' => get_post_meta( $post_id, '_wc_display_cost', true ), 'type' => 'number', 'desc_tip' => true, 'custom_attributes' => array(
