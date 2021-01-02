@@ -19,6 +19,9 @@ This extension extends Bookings and makes it possible to:
 * Reservations that span nights instead of days.
 * List check-in/check-out information on the product page, cart, and order pages.
 
+This extention is modified by Stef Hermans to facilitate HK Camperverhuur needs.
+After installation, this should not be kept up to date with the regular plugin, to avoid overwrites.
+
 == Installation ==
 
 1. Make sure WooCommerce & WooCommerce Bookings are installed.
