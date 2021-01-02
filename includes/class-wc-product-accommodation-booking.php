@@ -356,7 +356,87 @@ class WC_Product_Accommodation_Booking extends WC_Product_Booking {
 	 * @return integer
 	 */
 	public function get_duration( $context = 'view' ) {
-		return 1;
+		// Modified by Stef Hermans.
+		// This should return a customized duration based on selected setting in the admin panel.
+		// Original: return 1;
+		$product = wc_get_product( $this->get_id() );
+		$cost_calc_mode = $product->get_meta( '_wc_booking_block_cost_calculation_mode' );
+
+		switch ($cost_calc_mode)
+		{
+			case "blocks":
+				return (int) $product->get_meta( '_wc_booking_block_days' );
+			break;
+			case "custom":
+				// TODO
+				// break;
+			case "nights":
+			default:
+				return 1;
+		}
+	}
+
+	/**
+	 * Overwrite get block cost.
+	 *
+	 * Added by Stef Hermans.
+	 *
+	 * As all costs are ultimately calculated on a block basis, this function is heavily modified to support two different prices / blocks.
+	 *
+	 * Through the admin panel, the mode of calculation / block size can be changed.
+	 * A custom sized block, or a block size of 1 can be chosen, to calculate prices with.
+	 * Two different prices, price per night (block of single night) or price per block (block of user defined size) can be entered.
+	 *
+	 * Furthermore, the option exists to define when these block sizes are used; Always block or always night, or custom:
+	 * Custom will allow the admin to define rules based on dates, where a certain option should be chosen.
+	 * The start date is ALWAYS defining which mode to chose.
+	 *
+	 */
+	public function get_block_cost( $context = 'view' ) {
+		$product = wc_get_product( $this->get_id() );
+		$cost_calc_mode = $product->get_meta( '_wc_booking_block_cost_calculation_mode' );
+
+		$base_cost = $product->get_meta( '_wc_booking_base_cost' );
+		$block_cost = $product->get_meta( '_wc_booking_block_cost' );
+
+		error_log("Cost calculation mode: {$cost_calc_mode}");
+
+		error_log("Base cost: {$base_cost}");
+
+		switch ($cost_calc_mode)
+		{
+			case "nights":
+				return (float) $product->get_meta( '_wc_booking_base_cost' );
+			break;
+			case "blocks":
+				return parent::get_block_cost($context);
+			break;
+			case "custom":
+				// TODO
+			// Intentional fall-through - Custom not implemented, use default.
+			// break;
+			default:
+				return (float) $product->get_meta( '_wc_booking_base_cost' );
+		}
+	}
+
+	/ **
+	  * Overwrite get restricted days.
+	  *
+	  * Added by Stef Hermans.
+	  *
+	  * Return the restricted days based on the selection in the admin panel.
+	  */
+	public function get_restricted_days ( $context = 'view' ) {
+		$product = wc_get_product( $this->get_id() );
+		$cost_calc_mode = $product->get_meta( '_wc_booking_block_cost_calculation_mode' );
+
+		if ($cost_calc_mode == "nights") { // || cost_calc_mode == "custom" && date_matches
+			// No restrictions
+			return array(0,1,2,3,4,5);
+		}
+
+		return parent::get_restricted_days();
 	}
 }
 
